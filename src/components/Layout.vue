@@ -10,6 +10,8 @@ export default {
 }
 </script>
 
-
 <style lang="scss">
+.pure-cron-layout {
+  background: red;
+}
 </style>
