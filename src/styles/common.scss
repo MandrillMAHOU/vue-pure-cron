@@ -1,0 +1,15 @@
+.pure-cron-component {
+  input {
+    &[type=text], &[type=number] {
+      border: 1px solid $border;
+      border-radius: 2px;
+      min-width: 60px;
+      padding: 2px 0 2px 5px;
+      outline: none;
+    }
+    &[disabled] {
+      background: $bg-grey;
+      color: $grey;
+    }
+  }
+}

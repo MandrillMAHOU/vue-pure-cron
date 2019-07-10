@@ -1,22 +1,21 @@
 <template>
-  <div id="app">
-    <cron-layout></cron-layout>
+  <div id="vue-pure-app">
+    <pure-cron></pure-cron>
   </div>
 </template>
 
 <script>
-import CronLayout from '@/components/Layout.vue';
+import PureCron from '@/views/index.vue';
 
 export default {
   name: 'App',
   components: {
-    CronLayout,
+    PureCron,
   }
-}
+};
 </script>
 
 <style lang="scss">
-#app {
+#vue-pure-app {
 }
 </style>
-

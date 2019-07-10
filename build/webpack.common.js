@@ -1,3 +1,4 @@
+/* eslint-disable */
 const path = require('path');
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -35,7 +36,21 @@ module.exports = {
       },
       {
         test: /\.(css|scss)$/,
-        use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader', 'sass-loader']
+        use: [
+          MiniCssExtractPlugin.loader,
+          'css-loader',
+          'postcss-loader',
+          'sass-loader',
+          {
+            loader: 'sass-resources-loader',
+            options: {
+              sourceMap: true,
+              resources: [
+                path.resolve(__dirname, '../src/styles/mixins.scss'),
+              ]
+            }
+          }
+        ]
       },
       {
         test: /\.js$/,
@@ -55,4 +70,4 @@ module.exports = {
       '@': path.resolve(__dirname, '../src'),
     },
   }
-}
+};
