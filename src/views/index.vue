@@ -1,5 +1,5 @@
 <template>
-  <div class="pure-cron-component" v-if="reRender">
+  <div class="pure-cron-component" v-if="reRender" :style="`width: ${computedWidth}`">
     <div class="pure-cron-tabs-wrapper">
       <div
         class="tab"
@@ -51,6 +51,12 @@ export default {
     Week,
     Year
   },
+  props: {
+    width: {
+      type: [String, Number],
+      default: '100%',
+    }
+  },
   data() {
     return {
       curTab: 'second',
@@ -76,6 +82,14 @@ export default {
     };
   },
   computed: {
+    computedWidth() {
+      const { width } = this;
+      console.log(width);
+      if (typeof width === 'number' || (width && Number(width))) {
+        return `${width}px`;
+      }
+      return width;
+    },
     cronText() {
       const { cronResult } = this;
       return `${cronResult.second || '*'} ${cronResult.minute || '*'} ${cronResult.hour || '*'} ${cronResult.day || '*'} ${cronResult.month || '*'} ${cronResult.week || '?'} ${cronResult.year || '*'}`;

@@ -1,6 +1,6 @@
 <template>
   <div id="vue-pure-app">
-    <pure-cron></pure-cron>
+    <pure-cron width="500"></pure-cron>
   </div>
 </template>
 
