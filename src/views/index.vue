@@ -136,8 +136,6 @@ export default {
 
 <style lang="scss" scoped>
 .pure-cron-component {
-  width: 50%;
-  margin: 100px auto;
   min-width: 420px;
   background: $white;
   padding-bottom: 10px;

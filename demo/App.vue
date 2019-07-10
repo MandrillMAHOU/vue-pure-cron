@@ -12,5 +12,7 @@ export default {
 
 <style lang="scss">
 #vue-pure-app {
+  width: 50%;
+  margin: 100px auto;
 }
 </style>
