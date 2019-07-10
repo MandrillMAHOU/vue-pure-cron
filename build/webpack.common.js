@@ -1,8 +1,6 @@
 /* eslint-disable */
 const path = require('path');
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const VueLoader = require('vue-loader/lib/plugin');
 
 module.exports = {
@@ -10,7 +8,7 @@ module.exports = {
   output: {
     // publicPath: '/dist/',
     path: path.resolve(__dirname, '../dist'),
-    filename: path.join('js', 'vuePureCron.min.js'),
+    filename: 'vuePureCron.min.js',
     library: 'vue-pure-cron',
     libraryTarget: 'umd',
     umdNamedDefine: true,
@@ -18,14 +16,6 @@ module.exports = {
   plugins: [
     new VueLoader(),
     new CleanWebpackPlugin(),
-    new HtmlWebpackPlugin({
-      title: 'Vue pure cron',
-      filename: 'index.html',
-      template: 'index.html'
-    }),
-    new MiniCssExtractPlugin({
-      filename: path.join('css', '[name].css'),
-    })
   ],
   module: {
     rules: [
@@ -36,7 +26,7 @@ module.exports = {
       {
         test: /\.(css|scss)$/,
         use: [
-          MiniCssExtractPlugin.loader,
+          'style-loader',
           'css-loader',
           'postcss-loader',
           'sass-loader',

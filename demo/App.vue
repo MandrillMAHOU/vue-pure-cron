@@ -5,13 +5,8 @@
 </template>
 
 <script>
-import PureCron from '@/views/index.vue';
-
 export default {
   name: 'App',
-  components: {
-    PureCron,
-  }
 };
 </script>
 
