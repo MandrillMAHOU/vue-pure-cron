@@ -1,4 +1,7 @@
 # Vue Pure Cron
+
+[![npm](https://img.shields.io/npm/v/vue-pure-cron.svg)](https://www.npmjs.com/package/vue-pure-cron)
+
 ## Introduction
 Vue pure cron is a vue component designed to generate commonly used cron expression.
 
