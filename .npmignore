@@ -6,6 +6,7 @@ src
 .editorconfig
 .eslintrc.json
 postcss.congif.js
+package-lock.json
 
 # local env files
 .env.local

@@ -3,6 +3,7 @@ node_modules
 .npmignore
 .editorconfig
 .eslintrc.json
+package-lock.json
 
 # local env files
 .env.local
