@@ -3,6 +3,10 @@ node_modules
 build
 demo
 src
+.editorconfig
+.eslintrc.json
+.babel.config.js
+postcss.congif.js
 
 # local env files
 .env.local
