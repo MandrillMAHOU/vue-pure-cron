@@ -84,7 +84,6 @@ export default {
   computed: {
     computedWidth() {
       const { width } = this;
-      console.log(width);
       if (typeof width === 'number' || (width && Number(width))) {
         return `${width}px`;
       }

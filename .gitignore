@@ -1,5 +1,8 @@
 .DS_Store
 node_modules
+.npmignore
+.editorconfig
+.eslintrc.json
 
 # local env files
 .env.local

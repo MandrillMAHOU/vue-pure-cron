@@ -5,7 +5,6 @@ demo
 src
 .editorconfig
 .eslintrc.json
-.babel.config.js
 postcss.congif.js
 
 # local env files

@@ -39,6 +39,7 @@ export default {
 
 <style lang="scss" scoped>
 .pure-cron-select-wrapper {
+  text-align: left;
   cursor: pointer;
   line-height: 25px;
   margin-bottom: 20px;

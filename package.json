@@ -4,6 +4,10 @@
   "description": "",
   "private": false,
   "main": "dist/vuePureCron.min.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MandrillMAHOU/vue-pure-cron.git"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "serve": "webpack-dev-server --open --config build/webpack.dev.js",
@@ -15,7 +19,7 @@
     "cron"
   ],
   "author": "Mandrill",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {},
   "devDependencies": {
     "@babel/core": "^7.4.5",
