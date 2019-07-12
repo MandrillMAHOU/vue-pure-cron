@@ -1,6 +1,6 @@
 {
   "name": "vue-pure-cron",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Vue pure cron is a vue component designed to generate commonly used cron expression.",
   "private": false,
   "main": "dist/vuePureCron.min.js",
