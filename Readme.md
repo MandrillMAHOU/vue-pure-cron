@@ -21,9 +21,10 @@ Vue.use(PureCron);
 ## Attributes
 | Attribute name |Description|Type|Default|Attention
 |-|-|-|-|-|
-|width|width of the component|string, number|100%|Component has a min-width of 420px|
+|width|width of the component|string, number|`'100%'`|Component has a min-width of 420px|
+|showOpertionPanel|If operation panel is displayed|boolean|`true`|-|
 
 ## Events
-| Event name |Description| Parameters|
-|-|-|-|
-|generate|triggers when confirm btn is clicked|exp(generated cron expression)|
+| Event name|Description| Parameters|Attention
+|-|-|-|-|
+|generate|triggers when confirm btn is clicked|exp(generated cron expression)|confirm btn only shows when showOpertionPanel attr is `true`|

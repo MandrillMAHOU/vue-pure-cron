@@ -23,8 +23,9 @@
       <span class="preview">
         {{cronText}}
       </span>
+      <i class="clear-icon" title="Clear exp" @click="clearAll" v-if="!showOpertionPanel"></i>
     </div>
-    <div class="pure-cron-operations-wrapper">
+    <div class="pure-cron-operations-wrapper" v-if="showOpertionPanel">
       <div class="confirm btn" @click="confirm">Confirm</div>
       <div class="clear btn" @click="clearAll">Clear</div>
     </div>
@@ -55,6 +56,10 @@ export default {
     width: {
       type: [String, Number],
       default: '100%',
+    },
+    showOpertionPanel: {
+      type: Boolean,
+      default: true,
     }
   },
   data() {
@@ -199,6 +204,15 @@ export default {
     .preview {
       text-align: center;
       font-weight: bold;
+      margin-right: 15px;
+    }
+    .clear-icon {
+      cursor: pointer;
+      width: 14px;
+      height: 14px;
+      background: url('~@/assets/clear.png');
+      background-size: contain;
+      background-repeat: no-repeat;
     }
   }
   .pure-cron-operations-wrapper {
