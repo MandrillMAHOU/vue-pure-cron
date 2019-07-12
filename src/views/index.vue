@@ -23,9 +23,9 @@
       <span class="preview">
         {{cronText}}
       </span>
-      <i class="clear-icon" title="Clear exp" @click="clearAll" v-if="!showOpertionPanel"></i>
+      <i class="clear-icon" title="Clear exp" @click="clearAll" v-if="!showOperationPanel"></i>
     </div>
-    <div class="pure-cron-operations-wrapper" v-if="showOpertionPanel">
+    <div class="pure-cron-operations-wrapper" v-if="showOperationPanel">
       <div class="confirm btn" @click="confirm">Confirm</div>
       <div class="clear btn" @click="clearAll">Clear</div>
     </div>
@@ -57,7 +57,7 @@ export default {
       type: [String, Number],
       default: '100%',
     },
-    showOpertionPanel: {
+    showOperationPanel: {
       type: Boolean,
       default: true,
     }
