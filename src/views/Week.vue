@@ -77,7 +77,7 @@ export default {
   computed: {
     localCrons() {
       return {
-        0: '1-7',
+        0: '2-6',
         1: `${this.dayMap[this.everyDay]}`,
         2: `${this.dayMap[this.lastDay]}L`,
         3: `${this.dayMap[this.nthDay]}#${this.limitNum(this.nth, 1, 5)}`
