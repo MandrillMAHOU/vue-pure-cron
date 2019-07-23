@@ -1,0 +1,52 @@
+{
+  "basic": {
+    "second": "秒",
+    "seconds": "秒",
+    "minute": "分钟",
+    "minutes": "分钟",
+    "hour": "小时",
+    "hours": "小时",
+    "day": "天",
+    "days": "天",
+    "dayOfMonth": "当月的具体天数",
+    "weekday": "工作日",
+    "month": "月",
+    "months": "月",
+    "week": "星期",
+    "year": "年",
+    "years": "年",
+    "last": "最后",
+    "every": "每",
+    "every2": "每隔",
+    "specify": "指定",
+    "example": "例如："
+  },
+  "second": {
+    "zero": "指定分钟的第0秒",
+    "start": ["从第 ", "", "秒开始"]
+  },
+  "minute": {
+    "start": ["从第 ", "", "分钟开始"]
+  },
+  "hour": {
+    "start": ["从第 ", "", "小时开始"]
+  },
+  "day": {
+    "last": "月份最后一天",
+    "lastWeekday": "月份最后一个工作日",
+    "start": ["从第 ", "", "天开始"],
+    "toLast": ["距离当月最后一天", "天"],
+    "near": ["距离当月第", "天最近的工作日"]
+  },
+  "week": {
+    "every": "每个",
+    "last": ["当月最后一个", ""],
+    "number": ["当月第", "个", ""]
+  },
+  "month": {
+    "start": ["从第 ", "", "个月开始"]
+  },
+  "year": {
+    "start": ["从 ", "", "年开始"]
+  }
+}

@@ -2,12 +2,12 @@
   <div class="pure-cron-minute-component">
     <select-wrapper value="0" :curSelect="curSelect" @selectChange="onSelectChange">
       <template slot="content">
-        <span>Every minute</span>
+        <span>{{ lang.basic.every }}{{ lang.basic.minute }}</span>
       </template>
     </select-wrapper>
     <select-wrapper value="1" :curSelect="curSelect" @selectChange="onSelectChange">
       <template slot="content">
-        Every
+        {{ lang.basic.every2 }}
         <input
           type="number"
           placeholder="1"
@@ -16,7 +16,7 @@
           :max="incrementOptions.stepMax"
           v-model="increment.step"
           :disabled="curSelect !== '1'"/>
-        minute(s) starting at minute
+        {{ lang.basic.minutes }}{{ lang.minute.start[0]}}{{ lang.minute.start[1] }}
         <input
           type="number"
           placeholder="0"
@@ -25,15 +25,16 @@
           :max="incrementOptions.startMax"
           v-model="increment.start"
           :disabled="curSelect !== '1'"/>
+        {{ lang.minute.start[2] }}
       </template>
     </select-wrapper>
     <select-wrapper value="2" :curSelect="curSelect" @selectChange="onSelectChange">
       <template slot="content">
-        <span>Specify minute(s):</span>
+        <span>{{ lang.basic.specify }}{{ lang.basic.minutes }}:</span>
         <input
           type="text"
           v-model="specify"
-          placeholder="Example: 0,15,30,45"
+          :placeholder="`${lang.basic.example}0,15,30,45`"
           :disabled="curSelect !== '2'"/>
       </template>
     </select-wrapper>
@@ -49,6 +50,11 @@ export default {
   mixins: [selectMixin],
   components: {
     SelectWrapper,
+  },
+  props: {
+    lang: {
+      type: Object,
+    }
   },
   data() {
     return {

@@ -1,0 +1,52 @@
+{
+  "basic": {
+    "second": "second ",
+    "seconds": "second(s) ",
+    "minute": "minute ",
+    "minutes": "minute(s) ",
+    "hour": "hour ",
+    "hours": "hour(s) ",
+    "day": "day ",
+    "days": "day(s) ",
+    "dayOfMonth": "day(s) of month",
+    "weekday": "weekday ",
+    "month": "month ",
+    "months": "month(s) ",
+    "week": "week ",
+    "year": "year ",
+    "years": "year(s) ",
+    "last": "last ",
+    "every": "every ",
+    "every2": "every ",
+    "specify": "specify ",
+    "example": "Example: "
+  },
+  "second": {
+    "zero": "0 second of minute",
+    "start": ["starting at ", "second ", ""]
+  },
+  "minute": {
+    "start": ["starting at ", "minute ", ""]
+  },
+  "hour": {
+    "start": ["starting at ", "hour ", ""]
+  },
+  "day": {
+    "last": "last day of the month",
+    "lastWeekday": "last weekday of the month",
+    "start": ["starting at ", "day ", ""],
+    "toLast": ["", "day to last day of the calendar month"],
+    "near": ["weekday nearest to the", "day of the month"]
+  },
+  "week": {
+    "every": "every",
+    "last": ["last ", "of the month"],
+    "number": ["no.", "of the month", ""]
+  },
+  "month": {
+    "start": ["starting at ", "month ", ""]
+  },
+  "year": {
+    "start": ["starting at ", "year ", ""]
+  }
+}

@@ -4,10 +4,11 @@
     <span
       class="custom-radio"
       :class="{checked: localSelect === value}"></span>
-    <slot
-      class="select-content"
-      name="content">
-    </slot>
+    <span class="select-content">
+      <slot
+        name="content">
+      </slot>
+    </span>
   </div>
 </template>
 
@@ -44,6 +45,12 @@ export default {
   line-height: 25px;
   margin-bottom: 20px;
   position: relative;
+  .select-content {
+    display: inline-block;
+  }
+  .select-content:first-letter {
+    text-transform: uppercase;
+  }
   input[type=radio] {
     opacity: 0;
   }

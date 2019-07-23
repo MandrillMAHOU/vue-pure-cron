@@ -10,6 +10,8 @@ module.exports = merge(common, {
   devServer: {
     contentBase: './dist',
     publicPath: '/dev/',
+    hot: true,
+    inline: true,
   },
   plugins: [
     new HtmlWebpackPlugin({

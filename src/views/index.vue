@@ -7,7 +7,23 @@
         v-for="(item, index) of tabList"
         :key="index"
         @click="curTab = item.prop">
-        <span>{{item.label}}</span>
+        <span>{{ item[activeLang] }}</span>
+      </div>
+    </div>
+    <div class="pure-cron-operations-wrapper" v-if="showLangSwitch">
+      <div
+        class="language-switch"
+        @click="switchLang">
+        <div
+          class="language-on"
+          :class="activeLang">
+          {{ langOptions[activeLang][activeLang] }}
+        </div>
+        <div
+          class="language-off"
+          :class="activeLang">
+          {{ langOptions[inactiveLang][activeLang] }}
+        </div>
       </div>
     </div>
     <div class="pure-cron-subcomponent-wrapper">
@@ -15,19 +31,21 @@
         <component
           class="pure-cron-subcomponent"
           :is="curComponent"
+          :activeLang="activeLang"
+          :lang="curLang"
           @cronChange="onCronChange" />
       </keep-alive>
     </div>
     <div class="pure-cron-preview-wrapper">
-      <span class="label">Preview: </span>
+      <span class="label">{{ activeLang === 'en' ? 'Preview: ' : '预览：' }}</span>
       <span class="preview">
         {{cronText}}
       </span>
       <i class="clear-icon" title="Clear exp" @click="clearAll" v-if="!showOperationPanel"></i>
     </div>
-    <div class="pure-cron-operations-wrapper" v-if="showOperationPanel">
-      <div class="confirm btn" @click="confirm">Confirm</div>
-      <div class="clear btn" @click="clearAll">Clear</div>
+    <div class="pure-cron-btns-wrapper" v-if="showOperationPanel">
+      <div class="confirm btn" @click="confirm">{{ activeLang === 'en' ? 'Confirm' : '确定' }}</div>
+      <div class="clear btn" @click="clearAll">{{ activeLang === 'en' ? 'Clear' : '清除' }}</div>
     </div>
   </div>
 </template>
@@ -40,6 +58,7 @@ import Day from './Day.vue';
 import Month from './Month.vue';
 import Week from './Week.vue';
 import Year from './Year.vue';
+import langs from '@/lang';
 
 export default {
   name: 'pure-cron',
@@ -60,19 +79,32 @@ export default {
     showOperationPanel: {
       type: Boolean,
       default: true,
+    },
+    defaultLang: {
+      type: String,
+      default: 'zh',
+    },
+    showLangSwitch: {
+      type: Boolean,
+      default: true,
     }
   },
   data() {
     return {
       curTab: 'second',
+      activeLang: this.defaultLang,
+      langOptions: {
+        en: { en: 'en', zh: '英' },
+        zh: { en: 'zh', zh: '中' },
+      },
       tabList: [
-        { prop: 'second', label: 'Second' },
-        { prop: 'minute', label: 'Minute' },
-        { prop: 'hour', label: 'Hour' },
-        { prop: 'day', label: 'Day of M' },
-        { prop: 'month', label: 'Month' },
-        { prop: 'week', label: 'Day of W' },
-        { prop: 'year', label: 'Year' },
+        { prop: 'second', en: 'Second', zh: '秒' },
+        { prop: 'minute', en: 'Minute', zh: '分钟' },
+        { prop: 'hour', en: 'Hour', zh: '小时' },
+        { prop: 'day', en: 'Day of M', zh: '日期' },
+        { prop: 'month', en: 'Month', zh: '月份' },
+        { prop: 'week', en: 'Day of W', zh: '星期' },
+        { prop: 'year', en: 'Year', zh: '年' },
       ],
       cronResult: {
         second: '',
@@ -87,6 +119,16 @@ export default {
     };
   },
   computed: {
+    inactiveLang() {
+      if (this.activeLang === 'en') {
+        return 'zh';
+      }
+      return 'en';
+    },
+    // cur selected language strings
+    curLang() {
+      return langs[this.activeLang];
+    },
     computedWidth() {
       const { width } = this;
       if (typeof width === 'number' || (width && Number(width))) {
@@ -120,6 +162,14 @@ export default {
     }
   },
   methods: {
+    // switch lang
+    switchLang() {
+      if (this.activeLang === 'en') {
+        this.activeLang = 'zh';
+      } else {
+        this.activeLang = 'en';
+      }
+    },
     // cron field change
     onCronChange(val) {
       this.cronResult[val.type] = val.value;
@@ -188,8 +238,52 @@ export default {
       }
     }
   }
+  .pure-cron-operations-wrapper {
+    margin-top: 10px;
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 15px;
+    .language-switch {
+      cursor: pointer;
+      height: 20px;
+      width: 50px;
+      border: 2px solid $light-grey;
+      border-radius: 20px;
+      position: relative;
+      .language-on, .language-off {
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        top: 0;
+        bottom: 0;
+        width: 50%;
+        border-radius: 20px;
+      }
+      .language-on {
+        // transition: all .5s;
+        color: $white;
+        background: $color;
+        &.en {
+          left: 0;
+        }
+        &.zh {
+          left: 50%;
+        }
+      }
+      .language-off {
+        color: $grey;
+        &.en {
+          left: 50%;
+        }
+        &.zh {
+          left: 0;
+        }
+      }
+    }
+  }
   .pure-cron-subcomponent-wrapper {
-    padding: 20px 20px 0 20px;
+    padding: 10px 20px 0 20px;
     border-bottom: 1px solid $light-grey;
   }
   .pure-cron-preview-wrapper {
@@ -215,7 +309,7 @@ export default {
       background-repeat: no-repeat;
     }
   }
-  .pure-cron-operations-wrapper {
+  .pure-cron-btns-wrapper {
     display: flex;
     align-items: center;
     justify-content: center;

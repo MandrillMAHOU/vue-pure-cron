@@ -2,22 +2,22 @@
   <div class="pure-cron-day-component">
     <select-wrapper value="0" :curSelect="curSelect" @selectChange="onSelectChange">
       <template slot="content">
-        <span>Every day</span>
+        <span>{{ lang.basic.every }}{{ lang.basic.day }}</span>
       </template>
     </select-wrapper>
     <select-wrapper value="1" :curSelect="curSelect" @selectChange="onSelectChange">
       <template slot="content">
-        <span>Last day of the month</span>
+        <span>{{ lang.day.last }}</span>
       </template>
     </select-wrapper>
     <select-wrapper value="2" :curSelect="curSelect" @selectChange="onSelectChange">
       <template slot="content">
-        <span>Last weekday of the month</span>
+        <span>{{ lang.day.lastWeekday }}</span>
       </template>
     </select-wrapper>
     <select-wrapper value="3" :curSelect="curSelect" @selectChange="onSelectChange">
       <template slot="content">
-        Every
+        {{ lang.basic.every2 }}
         <input
           type="number"
           placeholder="7"
@@ -26,7 +26,7 @@
           :max="incrementOptions.stepMax"
           v-model="increment.step"
           :disabled="curSelect !== '3'"/>
-        day(s) starting at day
+        {{ lang.basic.days }}{{ lang.day.start[0]}}{{ lang.day.start[1] }}
         <input
           type="number"
           placeholder="1"
@@ -35,10 +35,12 @@
           :max="incrementOptions.startMax"
           v-model="increment.start"
           :disabled="curSelect !== '3'"/>
+        {{ lang.day.start[2] }}
       </template>
     </select-wrapper>
     <select-wrapper value="4" :curSelect="curSelect" @selectChange="onSelectChange">
       <template slot="content">
+        <span>{{ lang.day.toLast[0] }}</span>
         <input
           type="number"
           placeholder="1"
@@ -47,12 +49,12 @@
           :max="incrementOptions.startMax"
           v-model="toLast"
           :disabled="curSelect !== '4'"/>
-        <span>day to last day of the calendar month</span>
+        <span>{{ lang.day.toLast[1] }}</span>
       </template>
     </select-wrapper>
     <select-wrapper value="5" :curSelect="curSelect" @selectChange="onSelectChange">
       <template slot="content">
-        <span>Weekday nearest to the</span>
+        <span>{{ lang.day.near[0] }}</span>
         <input
           type="number"
           placeholder="15"
@@ -61,16 +63,16 @@
           :max="incrementOptions.startMax"
           v-model="nearestDay"
           :disabled="curSelect !== '5'"/>
-        <span>day of the month</span>
+        <span>{{ lang.day.near[1] }}</span>
       </template>
     </select-wrapper>
     <select-wrapper value="6" :curSelect="curSelect" @selectChange="onSelectChange">
       <template slot="content">
-        <span>Specify day(s) of month:</span>
+        <span>{{ lang.basic.specify }}{{ lang.basic.dayOfMonth }}:</span>
         <input
           type="text"
           v-model="specify"
-          placeholder="Example: 10,20,30"
+          :placeholder="`${lang.basic.example}10,20,30`"
           :disabled="curSelect !== '6'"/>
       </template>
     </select-wrapper>
@@ -86,6 +88,11 @@ export default {
   mixins: [selectMixin],
   components: {
     SelectWrapper,
+  },
+  props: {
+    lang: {
+      type: Object,
+    }
   },
   data() {
     return {

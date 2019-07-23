@@ -5,7 +5,7 @@
       ref="dropdown"
       @click="expand = !expand">
       <span>
-        {{value}}
+        {{ displayVal }}
       </span>
       <div class="icon-wrapper"></div>
       <ul class="dropdown-list" v-show="expand">
@@ -14,8 +14,8 @@
           :class="{active: item === value}"
           v-for="(item, index) of dayList"
           :key="index"
-          @click="dayChange(item)">
-          {{item}}
+          @click="dayChange(item.en)">
+          {{item[activeLang]}}
         </li>
       </ul>
     </span>
@@ -30,21 +30,35 @@ export default {
       type: String,
       default: '',
       required: true,
+    },
+    activeLang: {
+      type: String,
+      default: 'en',
     }
   },
   data() {
     return {
       dayList: [
-        'SUN',
-        'MON',
-        'TUE',
-        'WED',
-        'THU',
-        'FRI',
-        'SAT'
+        { zh: '星期天', en: 'SUN' },
+        { zh: '星期一', en: 'MON' },
+        { zh: '星期二', en: 'TUE' },
+        { zh: '星期三', en: 'WED' },
+        { zh: '星期四', en: 'THU' },
+        { zh: '星期五', en: 'FRI' },
+        { zh: '星期六', en: 'SAT' },
       ],
       expand: false,
     };
+  },
+  computed: {
+    displayVal() {
+      for (let i = 0; i < this.dayList.length; i += 1) {
+        if (this.dayList[i].en === this.value) {
+          return this.dayList[i][this.activeLang];
+        }
+      }
+      return 'MON';
+    }
   },
   methods: {
     dayChange(val) {
@@ -78,7 +92,7 @@ export default {
     line-height: 18px;
     border: 1px solid $border;
     border-radius: 2px;
-    min-width: 60px;
+    min-width: 70px;
     padding: 2px 0 2px 5px;
     outline: none;
     display: inline-flex;

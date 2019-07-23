@@ -2,31 +2,33 @@
   <div class="pure-cron-week-component">
     <select-wrapper value="0" :curSelect="curSelect" @selectChange="onSelectChange">
       <template slot="content">
-        <span>Every weekday</span>
+        <span>{{ lang.week.every }}{{ lang.basic.weekday }}</span>
       </template>
     </select-wrapper>
     <select-wrapper value="1" :curSelect="curSelect" @selectChange="onSelectChange">
       <template slot="content">
-        <span>Every</span>
+        <span>{{ lang.basic.every }}</span>
         <dropdown
           :disabled="curSelect !== '1'"
           :value="everyDay"
+          :activeLang="activeLang"
           @dayChange="onEveryDayChange"/>
       </template>
     </select-wrapper>
     <select-wrapper value="2" :curSelect="curSelect" @selectChange="onSelectChange">
       <template slot="content">
-        <span>Last</span>
+        <span>{{ lang.week.last[0] }}</span>
         <dropdown
           :disabled="curSelect !== '2'"
           :value="lastDay"
+          :activeLang="activeLang"
           @dayChange="onLastDayChange"/>
-        <span>of the month</span>
+        <span>{{ lang.week.last[1] }}</span>
       </template>
     </select-wrapper>
     <select-wrapper value="3" :curSelect="curSelect" @selectChange="onSelectChange">
       <template slot="content">
-        <span>No.</span>
+        <span>{{ lang.week.number[0] }}</span>
         <input
           type="number"
           placeholder="1"
@@ -35,11 +37,13 @@
           :max="5"
           v-model="nth"
           :disabled="curSelect !== '3'"/>
+        <span>{{ lang.week.number[1] }}</span>
         <dropdown
           :disabled="curSelect !== '3'"
           :value="nthDay"
+          :activeLang="activeLang"
           @dayChange="onNthDayChange"/>
-        <span>of the month</span>
+        <span>{{ lang.week.number[2] }}</span>
       </template>
     </select-wrapper>
   </div>
@@ -56,6 +60,15 @@ export default {
   components: {
     SelectWrapper,
     Dropdown,
+  },
+  props: {
+    lang: {
+      type: Object,
+    },
+    activeLang: {
+      type: String,
+      default: 'en'
+    }
   },
   data() {
     return {

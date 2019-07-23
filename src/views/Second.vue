@@ -2,17 +2,17 @@
   <div class="pure-cron-second-component">
     <select-wrapper value="0" :curSelect="curSelect" @selectChange="onSelectChange">
       <template slot="content">
-        <span>0 second of minute</span>
+        <span>{{ lang.second.zero }}</span>
       </template>
     </select-wrapper>
     <select-wrapper value="1" :curSelect="curSelect" @selectChange="onSelectChange">
       <template slot="content">
-        <span>Every second</span>
+        <span>{{ lang.basic.every }}{{ lang.basic.second }}</span>
       </template>
     </select-wrapper>
     <select-wrapper value="2" :curSelect="curSelect" @selectChange="onSelectChange">
       <template slot="content">
-        Every
+        {{ lang.basic.every2 }}
         <input
           type="number"
           placeholder="1"
@@ -21,7 +21,7 @@
           :max="incrementOptions.stepMax"
           v-model="increment.step"
           :disabled="curSelect !== '2'"/>
-        second(s) starting at second
+        {{ lang.basic.seconds }}{{ lang.second.start[0 ]}}{{ lang.second.start[1] }}
         <input
           type="number"
           placeholder="0"
@@ -30,6 +30,7 @@
           :max="incrementOptions.startMax"
           v-model="increment.start"
           :disabled="curSelect !== '2'"/>
+        {{ lang.second.start[2] }}
       </template>
     </select-wrapper>
   </div>
@@ -44,6 +45,11 @@ export default {
   mixins: [selectMixin],
   components: {
     SelectWrapper,
+  },
+  props: {
+    lang: {
+      type: Object,
+    }
   },
   data() {
     return {

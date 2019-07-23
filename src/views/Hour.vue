@@ -2,12 +2,12 @@
   <div class="pure-cron-hour-component">
     <select-wrapper value="0" :curSelect="curSelect" @selectChange="onSelectChange">
       <template slot="content">
-        <span>Every hour</span>
+        <span>{{ lang.basic.every }}{{ lang.basic.hour }}</span>
       </template>
     </select-wrapper>
     <select-wrapper value="1" :curSelect="curSelect" @selectChange="onSelectChange">
       <template slot="content">
-        Every
+        {{ lang.basic.every2 }}
         <input
           type="number"
           placeholder="1"
@@ -16,7 +16,7 @@
           :max="incrementOptions.stepMax"
           v-model="increment.step"
           :disabled="curSelect !== '1'"/>
-        hour(s) starting at hour
+        {{ lang.basic.hours }}{{ lang.hour.start[0]}}{{ lang.hour.start[1] }}
         <input
           type="number"
           placeholder="0"
@@ -25,15 +25,16 @@
           :max="incrementOptions.startMax"
           v-model="increment.start"
           :disabled="curSelect !== '1'"/>
+        {{ lang.hour.start[2] }}
       </template>
     </select-wrapper>
     <select-wrapper value="2" :curSelect="curSelect" @selectChange="onSelectChange">
       <template slot="content">
-        <span>Specify hour(s):</span>
+        <span>{{ lang.basic.specify }}{{ lang.basic.hours }}:</span>
         <input
           type="text"
           v-model="specify"
-          placeholder="Example: 10,14,16"
+          :placeholder="`${lang.basic.example}10,14,16`"
           :disabled="curSelect !== '2'"/>
       </template>
     </select-wrapper>
@@ -49,6 +50,11 @@ export default {
   mixins: [selectMixin],
   components: {
     SelectWrapper,
+  },
+  props: {
+    lang: {
+      type: Object,
+    }
   },
   data() {
     return {

@@ -2,12 +2,12 @@
   <div class="pure-cron-year-component">
     <select-wrapper value="0" :curSelect="curSelect" @selectChange="onSelectChange">
       <template slot="content">
-        <span>Every year</span>
+        <span>{{ lang.basic.every }}{{ lang.basic.year }}</span>
       </template>
     </select-wrapper>
     <select-wrapper value="1" :curSelect="curSelect" @selectChange="onSelectChange">
       <template slot="content">
-        Every
+        {{ lang.basic.every2 }}
         <input
           type="number"
           placeholder="1"
@@ -16,7 +16,7 @@
           :max="incrementOptions.stepMax"
           v-model="increment.step"
           :disabled="curSelect !== '1'"/>
-        year(s) starting at year
+        {{ lang.basic.years }}{{ lang.year.start[0]}}{{ lang.year.start[1] }}
         <input
           type="number"
           placeholder="1"
@@ -25,15 +25,16 @@
           :max="incrementOptions.startMax"
           v-model="increment.start"
           :disabled="curSelect !== '1'"/>
+        {{ lang.year.start[2] }}
       </template>
     </select-wrapper>
     <select-wrapper value="2" :curSelect="curSelect" @selectChange="onSelectChange">
       <template slot="content">
-        <span>Specify year(s):</span>
+        <span>{{ lang.basic.specify }}{{ lang.basic.years }}:</span>
         <input
           type="text"
           v-model="specify"
-          placeholder="Example: 2019,2021"
+          :placeholder="`${lang.basic.example}2019,2021`"
           :disabled="curSelect !== '2'"/>
       </template>
     </select-wrapper>
@@ -49,6 +50,11 @@ export default {
   mixins: [selectMixin],
   components: {
     SelectWrapper,
+  },
+  props: {
+    lang: {
+      type: Object,
+    }
   },
   data() {
     return {
